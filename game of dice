@@ -1,0 +1,14 @@
+# Запрос ввода для общего количества раундов
+total_rounds = int(input("Введите количество раундов: "))
+values = []
+
+# Запрос ввода значений для каждого раунда
+for _ in range(total_rounds):
+    values.append(list(map(int, input().split())))
+
+# Подсчет побед каждого игрока с использованием маржевого оператора
+win_bear = sum(1 if bear_score > kris_score else 0 for bear_score, kris_score in values)
+win_kris = sum(1 if kris_score > bear_score else 0 for bear_score, kris_score in values)
+
+# Определение и вывод победителя с использованием маржевого оператора
+print('Mishka' if win_bear > win_kris else 'Chris' if win_kris > win_bear else 'Friendship is magic!^^')
